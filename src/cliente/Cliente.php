@@ -1,36 +1,61 @@
 <?php
 
+
+
 class Cliente {
 
     private $id;
     private $nome;
     private $email;
-    private $cpf;
     private $endereco;
+    private $tipoPessoa;
 
 
-    function __construct($id, $nome, $cpf)
+    function __construct($id, $nome, $tipoPessoa)
     {
         $this->id = $id;
         $this->nome = $nome;
-        $this->cpf = $cpf;
-    }
+        $this->tipoPessoa = $tipoPessoa;
 
+    }
 
     /**
      * @return mixed
      */
-    public function getCpf()
+    public function getTipoPessoa()
     {
-        return $this->cpf;
+        return $this->tipoPessoa;
     }
 
     /**
-     * @param mixed $cpf
+     * @param mixed $tipoPessoa
      */
-    public function setCpf($cpf)
+    public function setTipoPessoa($tipoPessoa)
     {
-        $this->cpf = $cpf;
+        $this->tipoPessoa = $tipoPessoa;
+    }
+
+
+
+    public function returnTipoPessoa()
+    {
+
+        if($this->tipoPessoa instanceof PessoaFisica)
+        {
+            return "Pessoa_Física";
+        }else{
+            return "Pessoa_Jurídica";
+        }
+    }
+
+    public function returnDoc()
+    {
+        if($this->tipoPessoa instanceof PessoaFisica)
+        {
+            return $this->tipoPessoa->getCpf();
+        }else{
+            return $this->tipoPessoa->getCnpj();
+        }
     }
 
     /**

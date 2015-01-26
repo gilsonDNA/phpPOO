@@ -1,7 +1,7 @@
 <!-- ARQUIVO APRESENTA OS DETALHES DO CLIENTE -->
 <?php
     include_once("./pages/layout/header_padrao.php");
-    include __DIR__ . "/admin/cliente/clienteDAO.php";
+    include __DIR__ . "/src/cliente/clienteDAO.php";
     include_once("./pages/layout/menu.php");
 ?>
 
@@ -38,15 +38,27 @@
                    echo "<div class='form-group'>";
                    echo "    <label for='nome' class='col-sm-2 control-label'>Nome:</label>";
                    echo "      <div class='col-sm-10'>";
-                   echo "         <input type='email' class='form-control' id='nome' name='nome' value=".$cliente->getNome()." />";
+                   echo "         <input type='text' class='form-control' id='nome' name='nome' value=".$cliente->getNome()." />";
                    echo "     </div>";
                    echo " </div>";
-                   echo " <div class='form-group'>";
-                   echo "    <label for='cpf' class='col-sm-2 control-label'>CPF:</label>";
-                   echo "     <div class='col-sm-10'>";
-                   echo "        <input type='text' class='form-control' id='cpf' name='cpf' value=".$cliente->getCpf()." />";
-                   echo "     </div>";
-                   echo " </div>";
+
+                    echo "<div class='form-group'>";
+                    echo "    <label for='tipo' class='col-sm-2 control-label'>Tipo Pessoa:</label>";
+                    echo "      <div class='col-sm-20'>";
+                    echo "         <input type='text' class='form-control' id='tipo' name='tipo' value=".$cliente->returnTipoPessoa()." />";
+                    echo "     </div>";
+                    echo " </div>";
+
+
+                    echo " <div class='form-group'>";
+
+                    echo "<label for='cpf' class='col-sm-2 control-label'>CPF/CNPJ:</label>";
+
+                    echo "     <div class='col-sm-10'>";
+                    echo "        <input type='text' class='form-control' id='cpf' name='cpf' value=".$cliente->returnDoc()." />";
+                    echo "     </div>";
+                    echo " </div>";
+
                    echo " <hr />";
                    echo " <a href='listClientes.php'>Voltar</a>";
                 }

@@ -1,7 +1,7 @@
 <!-- ESTE ARQUIVO LISTA TODOS OS CLIENTES DO ARRAY -->
 <?php
     include_once("./pages/layout/header_padrao.php");
-    include __DIR__ . "/admin/cliente/clienteDAO.php";
+    include __DIR__ . "/src/cliente/clienteDAO.php";
     include_once("./pages/layout/menu.php");
 ?>
 
@@ -30,7 +30,8 @@
                     <td><b><a href="listClientes.php?ordem=1" title="Clique para ordernar">Id (ordem crescente) </a></b></td>
                 <?php endif; ?>
                 <td><b>Nome</b></td>
-                <td><b>Cpf</b></td>
+                <td><b>Tipo Pessoa</b></td>
+                <td><b>CPF/CNPJ</b></td>
                 <td><b>Visualizar</b></td>
             </tr>
 
@@ -52,7 +53,8 @@
                     echo "<tr>";
                     echo "<td>" . $cliente->getId() . "</td>";
                     echo "<td>" . $cliente->getNome() . "</td>";
-                    echo "<td>" . $cliente->getCpf() . "</td>";
+                    echo "<td>". $cliente->returnTipoPessoa()."</td>";
+                    echo "<td>". $cliente->returnDoc() ."</td>";
                     echo "<td>";
                     echo "<a href='detalheCliente.php?key=" . $cliente->getId() . "' title='clique para acessar'>Ver Detalhes</a></td>";
                     echo "</td></tr>";
