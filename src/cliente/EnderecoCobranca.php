@@ -3,5 +3,5 @@
 
 interface EnderecoCobranca {
 
-    public function addEnderecoCobranca($enderecoCobranca);
+    public function setEnderecoCobranca($enderecoCobranca);
 } 

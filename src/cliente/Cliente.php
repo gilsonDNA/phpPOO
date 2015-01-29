@@ -11,10 +11,11 @@ class Cliente {
     private $tipoPessoa;
 
 
-    function __construct($id, $nome, $tipoPessoa)
+    function __construct($id, $nome , $endereco, $tipoPessoa)
     {
         $this->id = $id;
         $this->nome = $nome;
+        $this->endereco = $endereco;
         $this->tipoPessoa = $tipoPessoa;
 
     }
@@ -56,6 +57,22 @@ class Cliente {
         }else{
             return $this->tipoPessoa->getCnpj();
         }
+    }
+
+    public function getEnderecoCobranca()
+    {
+        return $this->tipoPessoa->getEnderecoCobranca();
+    }
+
+    public function setEnderecoCobranca($enderecoCobranca)
+    {
+        return $this->tipoPessoa->setEnderecoCobranca($enderecoCobranca);
+    }
+
+    public function returnEstrelas()
+    {
+        return $this->tipoPessoa->getEstrelas();
+
     }
 
     /**

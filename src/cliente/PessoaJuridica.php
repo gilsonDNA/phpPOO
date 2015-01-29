@@ -32,10 +32,6 @@ class PessoaJuridica implements ClienteVip, EnderecoCobranca
     }
 
 
-    public function addEnderecoCobranca($enderecoCobranca)
-    {
-        $this->enderecoCobranca = $enderecoCobranca;
-    }
 
 
 

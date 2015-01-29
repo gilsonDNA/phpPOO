@@ -36,10 +36,7 @@ class PessoaFisica implements ClienteVip, EnderecoCobranca
     }
 
 
-    public function addEnderecoCobranca($enderecoCobranca)
-    {
-        $this->enderecoCobranca = $enderecoCobranca;
-    }
+
 
 
 

@@ -32,6 +32,7 @@
                 <td><b>Nome</b></td>
                 <td><b>Tipo Pessoa</b></td>
                 <td><b>CPF/CNPJ</b></td>
+                <td><b>Estrelas</b></td>
                 <td><b>Visualizar</b></td>
             </tr>
 
@@ -55,6 +56,7 @@
                     echo "<td>" . $cliente->getNome() . "</td>";
                     echo "<td>". $cliente->returnTipoPessoa()."</td>";
                     echo "<td>". $cliente->returnDoc() ."</td>";
+                    echo "<td>". $cliente->returnEstrelas() ."</td>";
                     echo "<td>";
                     echo "<a href='detalheCliente.php?key=" . $cliente->getId() . "' title='clique para acessar'>Ver Detalhes</a></td>";
                     echo "</td></tr>";
