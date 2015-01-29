@@ -78,7 +78,7 @@
                     echo " </div>";
 
                    echo " <hr />";
-                   echo " <a href='listClientes.php'>Voltar</a>";
+                   echo " <a href='listClientes.php?ordem=1'>Voltar</a>";
                 }
 
             }
