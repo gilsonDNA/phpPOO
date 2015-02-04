@@ -1,8 +1,8 @@
 <!-- ESTE ARQUIVO LISTA TODOS OS CLIENTES DO ARRAY -->
 <?php
-    include_once("./pages/layout/header_padrao.php");
-    include __DIR__ . "/src/cliente/clienteDAO.php";
-    include_once("./pages/layout/menu.php");
+    include_once("../layout/header_padrao.php");
+    include  "../../src/SON/Cliente/ClienteDAO.php";
+    include_once("../layout/menu.php");
 ?>
 
 
@@ -42,7 +42,7 @@
          * Retorna o array de objetos, depois percorre montando a lista de Clientes
          */
 
-            $listaClientes = getListClientes();
+            $listaClientes = \SON\Cliente\ClienteDAO::getListClientes();
 
             if($tipoOrdenacao == 2)
             {
@@ -54,9 +54,9 @@
                     echo "<tr>";
                     echo "<td>" . $cliente->getId() . "</td>";
                     echo "<td>" . $cliente->getNome() . "</td>";
-                    echo "<td>". $cliente->returnTipoPessoa()."</td>";
-                    echo "<td>". $cliente->returnDoc() ."</td>";
-                    echo "<td>". $cliente->returnEstrelas() ."</td>";
+                    echo "<td>".  $cliente->returnTipoPessoa()."</td>";
+                    echo "<td>".  $cliente->returnDoc() ."</td>";
+                    echo "<td>".  $cliente->returnEstrelas() ."</td>";
                     echo "<td>";
                     echo "<a href='detalheCliente.php?key=" . $cliente->getId() . "' title='clique para acessar'>Ver Detalhes</a></td>";
                     echo "</td></tr>";
@@ -74,4 +74,4 @@
 </div>
 
 
-<?php include_once("./pages/layout/footer.php"); ?>
+<?php include_once("../layout/footer.php"); ?>

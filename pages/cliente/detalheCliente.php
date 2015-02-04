@@ -1,8 +1,8 @@
 <!-- ARQUIVO APRESENTA OS DETALHES DO CLIENTE -->
 <?php
-    include_once("./pages/layout/header_padrao.php");
-    include __DIR__ . "/src/cliente/clienteDAO.php";
-    include_once("./pages/layout/menu.php");
+include_once("../layout/header_padrao.php");
+include  "../../src/SON/Cliente/ClienteDAO.php";
+include_once("../layout/menu.php");
 ?>
 
 
@@ -91,4 +91,4 @@
 
 </div>
 
-<?php include_once("./pages/layout/footer.php"); ?>
+<?php include_once("../layout/footer.php"); ?>

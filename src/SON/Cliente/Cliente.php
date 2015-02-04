@@ -1,6 +1,6 @@
 <?php
 
-
+namespace SON\Cliente;
 
 class Cliente {
 

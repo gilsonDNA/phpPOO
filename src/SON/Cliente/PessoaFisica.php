@@ -1,6 +1,6 @@
 <?php
-include_once "ClienteVip.php";
-include_once "EnderecoCobranca.php";
+namespace SON\Cliente;
+
 
 class PessoaFisica implements ClienteVip, EnderecoCobranca
 {
