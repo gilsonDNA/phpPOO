@@ -2,7 +2,7 @@
 
 namespace SON\Cliente;
 
-class Cliente {
+class Cliente{
 
     private $id;
     private $nome;
