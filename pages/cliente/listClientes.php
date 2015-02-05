@@ -1,7 +1,7 @@
 <!-- ESTE ARQUIVO LISTA TODOS OS CLIENTES DO ARRAY -->
 <?php
     include_once("../layout/header_padrao.php");
-    include "../../src/SON/Cliente/ClienteDAO.php";
+    include "../../src/SON/Cliente/ClienteDatabase.php";
     include_once("../layout/menu.php");
 ?>
 
@@ -44,7 +44,7 @@
          */
 
 
-            $listaClientes = \SON\Cliente\ClienteDAO::getListClientes();
+            $listaClientes = \SON\Cliente\ClienteDatabase::getListClientes();
 
             if($tipoOrdenacao == 2)
             {
