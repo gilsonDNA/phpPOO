@@ -1,7 +1,7 @@
 <!-- ARQUIVO APRESENTA OS DETALHES DO CLIENTE -->
 <?php
 include_once("../layout/header_padrao.php");
-include  "../../src/SON/Cliente/ClienteDAO.php";
+include "../../src/SON/Cliente/ClienteDAOOLD.php";
 include_once("../layout/menu.php");
 ?>
 

@@ -1,9 +1,10 @@
 <!-- ESTE ARQUIVO LISTA TODOS OS CLIENTES DO ARRAY -->
 <?php
     include_once("../layout/header_padrao.php");
-    include  "../../src/SON/Cliente/ClienteDAO.php";
+    include "../../src/SON/Cliente/ClienteDAO.php";
     include_once("../layout/menu.php");
 ?>
+
 
 
 <div class="span10">
@@ -41,6 +42,7 @@
         /**
          * Retorna o array de objetos, depois percorre montando a lista de Clientes
          */
+
 
             $listaClientes = \SON\Cliente\ClienteDAO::getListClientes();
 
