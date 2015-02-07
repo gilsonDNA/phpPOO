@@ -1,8 +1,9 @@
 <!-- ESTE ARQUIVO LISTA TODOS OS CLIENTES DO ARRAY -->
 <?php
-    include_once("../layout/header_padrao.php");
-    include "../../src/SON/Cliente/ClienteDatabase.php";
-    include_once("../layout/menu.php");
+require_once __DIR__ . "/../../autoload.php";
+include_once("../layout/header_padrao.php");
+include "../../src/SON/Cliente/ClienteDatabase.php";
+include_once("../layout/menu.php");
 ?>
 
 

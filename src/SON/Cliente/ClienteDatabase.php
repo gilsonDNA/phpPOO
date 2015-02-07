@@ -8,6 +8,9 @@
 
 namespace SON\Cliente;
 
+use SON\Cliente\Cliente;
+use SON\Cliente\PessoaJuridica;
+use SON\Cliente\PessoaFisica;
 
 class ClienteDatabase {
 

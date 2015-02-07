@@ -1,7 +1,8 @@
 <!-- ARQUIVO APRESENTA OS DETALHES DO CLIENTE -->
 <?php
+require_once __DIR__ . "/../../autoload.php";
 include_once("../layout/header_padrao.php");
-include "../../src/SON/Cliente/ClienteDAOOLD.php";
+include "../../src/SON/Cliente/ClienteDatabase.php";
 include_once("../layout/menu.php");
 ?>
 
@@ -18,7 +19,7 @@ include_once("../layout/menu.php");
              * */
 
             $idCliente = $_GET['key'];
-            $listaClientes = getListClientes();
+            $listaClientes = \SON\Cliente\ClienteDatabase::getListClientes();
             foreach($listaClientes as $cliente){
 
                 /**
