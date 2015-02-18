@@ -14,6 +14,7 @@ use SON\Cliente\PessoaFisica;
 use SON\DAO\ClienteDAO;
 use SON\DAO\ConexaoDB;
 
+
 class ClienteDatabase {
 
     //metodo que cria um array de clientes, gerando dados fictícios para o mesmo
@@ -29,10 +30,33 @@ class ClienteDatabase {
 
         $clienteDAO = new ClienteDAO($conn);
         $arrayClientes = $clienteDAO->getList();
+        $arrayObjCliente = array();
+
+        $i = 0;
+        foreach($arrayClientes as $arraycliente)
+        {
+            $tipo = $arraycliente['tipoPessoa'];
+            $tipoPessoa = null;
+
+
+            if(strcasecmp($tipo, 'Física')   == 0)
+            {
+                $tipoPessoa = new PessoaFisica($arraycliente['cpf']);
+            }else{
+                $tipoPessoa = new PessoaJuridica($arraycliente['cnpj']);
+            }
+            $tipoPessoa->setEnderecoCobranca($arraycliente['enderecoCobranca']);
+            $tipoPessoa->setGrau($arraycliente['grauVIP']);
+
+            $cliente = new Cliente($arraycliente['id'], $arraycliente['nome'], $arraycliente['endereco'], $tipoPessoa);
+            $arrayObjCliente[$i] = $cliente;
+            $i++;
+        }
 
 
 
-        return $arrayClientes;
+
+        return $arrayObjCliente;
     }
 
 

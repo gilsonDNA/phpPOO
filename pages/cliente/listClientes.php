@@ -54,11 +54,11 @@ include_once("../layout/menu.php");
             foreach($listaClientes as $cliente)
             {
 
-                var_dump($cliente);
-                die;
+                //var_dump($cliente);
+                //die;
                     echo "<tr>";
-                    echo "<td>" . $cliente->getId() . "</td>";
-                    echo "<td>" . $cliente->getNome() . "</td>";
+                    echo "<td>" . $cliente->getId(). "</td>";
+                    echo "<td>" . $cliente->getNome(). "</td>";
                     echo "<td>".  $cliente->returnTipoPessoa()."</td>";
                     echo "<td>".  $cliente->returnDoc() ."</td>";
                     echo "<td>".  $cliente->returnEstrelas() ."</td>";
