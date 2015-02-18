@@ -49,6 +49,17 @@ class Cliente{
         }
     }
 
+    public function returnTipoPessoaId()
+    {
+
+        if($this->tipoPessoa instanceof PessoaFisica)
+        {
+            return 1;
+        }else{
+            return 2;
+        }
+    }
+
     public function returnDoc()
     {
         if($this->tipoPessoa instanceof PessoaFisica)

@@ -54,6 +54,8 @@ include_once("../layout/menu.php");
             foreach($listaClientes as $cliente)
             {
 
+                var_dump($cliente);
+                die;
                     echo "<tr>";
                     echo "<td>" . $cliente->getId() . "</td>";
                     echo "<td>" . $cliente->getNome() . "</td>";
