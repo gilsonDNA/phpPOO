@@ -11,9 +11,10 @@ class Cliente{
     private $tipoPessoa;
 
 
-    function __construct($id, $nome , $endereco, $tipoPessoa)
+
+    public function __construct($nome , $endereco, $tipoPessoa)
     {
-        $this->id = $id;
+
         $this->nome = $nome;
         $this->endereco = $endereco;
         $this->tipoPessoa = $tipoPessoa;

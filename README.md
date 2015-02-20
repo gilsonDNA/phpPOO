@@ -25,6 +25,6 @@ Executar Fixture
 
 Para executar a Fixture execute o seguinte comando
 
-php /src/SON/DAO/FixtureMain.php
+php src/SON/DAO/FixtureMain.php
 
 

@@ -1,12 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gilson
- * Date: 14/02/15
- * Time: 18:25
- */
+
 
 namespace SON\DAO;
+
+use SON\Cliente\Cliente;
+use SON\Cliente\PessoaFisica;
+use SON\Cliente\PessoaJuridica;
 
 
 class Fixture
@@ -73,24 +72,17 @@ class Fixture
 
     }
 
-    function prepareInsertCliente($arrayClientes)
+    public function prepareInsertCliente($arrayClientes)
     {
 
+        $clienteDAO = new ClienteDAO($this->db);
 
-        foreach($arrayClientes as $array)
+        foreach($arrayClientes as $cliente)
         {
-            $smtp = $this->db->prepare("INSERT INTO tblcliente (nome,endereco, enderecoCobranca,tipoPessoa,cpf, cnpj,grauVIP) VALUES (:nome,:endereco, :enderecoCobranca,:tipoPessoa,:cpf, :cnpj,:grauVIP);");
-
-            $smtp->bindParam(":nome", $array[0]);
-            $smtp->bindParam(":endereco", $array[1]);
-            $smtp->bindParam(":enderecoCobranca", $array[2]);
-            $smtp->bindParam(":tipoPessoa", $array[3]);
-            $smtp->bindParam(":cpf", $array[4]);
-            $smtp->bindParam(":cnpj", $array[5]);
-            $smtp->bindParam(":grauVIP", $array[6]);
-
-            $smtp->execute();
+            $clienteDAO->persist($cliente);
         }
+
+        $clienteDAO->flush();
 
     }
 

@@ -20,43 +20,46 @@ class ClienteDAO
     function __construct(\PDO $db)
     {
         $this->db = $db;
+        $this->db->beginTransaction();
     }
 
-    function persist($cliente)
+    function persist(Cliente $cliente)
     {
-        $this->db->beginTransaction();
 
-
-
-        $strSQL = "INSERT INTO tblcliente (nome,endereco, enderecoCobranca,tipoPessoa,cpf, cnpj,grauVIP) VALUES (:nome,:endereco, :enderecoCobranca,:tipoPessoa,:cpf, :cnpj,:grauVIP);";
-        if($cliente->getId() != null  )
+        try
         {
-            $strSQL = "UPDATE tblcliente set nome = :nome,endereco = :endereco, enderecoCobranca = :enderecoCobranca,tipoPessoa = :tipoPessoa ,cpf = :cpf, cnpj = :cnpj ,grauVIP = :grauVIP ";
+            $strSQL = "INSERT INTO tblcliente (nome,endereco, enderecoCobranca,tipoPessoa,cpf, cnpj,grauVIP) VALUES (:nome,:endereco, :enderecoCobranca,:tipoPessoa,:cpf, :cnpj,:grauVIP);";
+            if($cliente->getId() != null  )
+            {
+                $strSQL = "UPDATE tblcliente set nome = :nome,endereco = :endereco, enderecoCobranca = :enderecoCobranca,tipoPessoa = :tipoPessoa ,cpf = :cpf, cnpj = :cnpj ,grauVIP = :grauVIP ";
+            }
+
+
+            $smtp = $this->db->prepare($strSQL);
+
+            $smtp->bindParam(":nome", $cliente->getNome());
+            $smtp->bindParam(":endereco", $cliente->getEndereco());
+            $smtp->bindParam(":enderecoCobranca", $cliente->getEnderecoCobranca());
+            $smtp->bindParam(":tipoPessoa", $cliente->returnTipoPessoa());
+
+            $valor = "0";
+            if($cliente->returnTipoPessoaId() == 1)
+            {
+                $smtp->bindParam(":cpf", $cliente->returnDoc());
+                $smtp->bindParam(":cnpj", $valor);
+            }else{
+                $smtp->bindParam(":cpf", $valor);
+                $smtp->bindParam(":cnpj", $cliente->returnDoc());
+            }
+
+            $smtp->bindParam(":grauVIP", $cliente->returnEstrelas());
+
+            $smtp->execute();
+        } catch (\PDOException $e) {
+            $error = "Erro: " . $e->getMessage();
+            $this->db->rollBack();
+            die($error);
         }
-
-
-        $smtp = $this->db->prepare($strSQL);
-
-        $smtp->bindParam(":nome", $cliente->getNome());
-        $smtp->bindParam(":endereco", $cliente->getEndereco());
-        $smtp->bindParam(":enderecoCobranca", $cliente->getEnderecoCobranca());
-        $smtp->bindParam(":tipoPessoa", $cliente->returnTipoPessoa());
-
-        $valor = "0";
-        if($cliente->returnTipoPessoaId() == 1)
-        {
-            $smtp->bindParam(":cpf", $cliente->returnDoc());
-            $smtp->bindParam(":cnpj", $valor);
-        }else{
-            $smtp->bindParam(":cpf", $valor);
-            $smtp->bindParam(":cnpj", $cliente->returnDoc());
-        }
-
-        $smtp->bindParam(":grauVIP", $cliente->returnEstrelas());
-
-        $smtp->execute();
-
-        $this->flush();
 
     }
 

@@ -15,6 +15,7 @@ use SON\DAO\ClienteDAO;
 use SON\DAO\ConexaoDB;
 
 
+
 class ClienteDatabase {
 
     //metodo que cria um array de clientes, gerando dados fictícios para o mesmo
@@ -27,6 +28,7 @@ class ClienteDatabase {
             echo "Erro ao conectar ao Banco ".$e->getMessage();
             die;
         }
+    
 
         $clienteDAO = new ClienteDAO($conn);
         $arrayClientes = $clienteDAO->getList();
