@@ -1,5 +1,9 @@
 <?php
-namespace SON\Cliente;
+namespace SON\CLI;
+
+
+use SON\CLI\Interfaces\ClienteVip;
+use SON\CLI\Interfaces\EnderecoCobranca;
 
 class PessoaJuridica implements ClienteVip, EnderecoCobranca
 {
@@ -9,14 +13,12 @@ class PessoaJuridica implements ClienteVip, EnderecoCobranca
     private $enderecoCobranca;
 
 
-
     function __construct($cnpj)
     {
 
         $this->cnpj = $cnpj;
         $this->estrelas = 0;
     }
-
 
 
     public function setGrau($quantEstrelas)
@@ -29,9 +31,6 @@ class PessoaJuridica implements ClienteVip, EnderecoCobranca
         return "Pessoa Jurídica";
 
     }
-
-
-
 
 
     /**
@@ -81,8 +80,6 @@ class PessoaJuridica implements ClienteVip, EnderecoCobranca
     {
         $this->enderecoCobranca = $enderecoCobranca;
     }
-
-
 
 
 }

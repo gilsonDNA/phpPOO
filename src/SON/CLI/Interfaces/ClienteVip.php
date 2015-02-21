@@ -1,5 +1,5 @@
 <?php
-namespace SON\Cliente;
+namespace SON\CLI\Interfaces;
 
 interface ClienteVip
 {

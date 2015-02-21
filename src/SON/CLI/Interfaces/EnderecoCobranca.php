@@ -1,7 +1,8 @@
 <?php
-namespace SON\Cliente;
+namespace SON\CLI\Interfaces;
 
-interface EnderecoCobranca {
+interface EnderecoCobranca
+{
 
     public function setEnderecoCobranca($enderecoCobranca);
 } 

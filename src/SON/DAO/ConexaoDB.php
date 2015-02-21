@@ -9,27 +9,26 @@
 namespace SON\DAO;
 
 
-class ConexaoDB {
+class ConexaoDB
+{
 
 
     static function getConexao()
     {
 
-        try
-        {
+        try {
 
             $host = '127.0.0.1';
             $dbname = 'phpOOP';
             $user = 'root';
             $password = 'dna123456';
 
-            return new \PDO("mysql:host={$host};dbname={$dbname}",  $user, $password);
+            return new \PDO("mysql:host={$host};dbname={$dbname}", $user, $password);
 
 
-        }catch (\PDOException $e)
-        {
-            echo $e->getMessage()."\n";
-            echo $e->getTraceAsString()."\n";
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . "\n";
+            echo $e->getTraceAsString() . "\n";
         }
     }
 

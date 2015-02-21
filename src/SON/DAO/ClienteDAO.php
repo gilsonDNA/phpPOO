@@ -8,8 +8,7 @@
 
 namespace SON\DAO;
 
-use SON\Cliente\Cliente;
-
+use SON\CLI\Cliente;
 
 
 class ClienteDAO
@@ -17,20 +16,22 @@ class ClienteDAO
     private $db;
 
 
-    function __construct(\PDO $db)
+    public function __construct(\PDO $db)
     {
         $this->db = $db;
         $this->db->beginTransaction();
     }
 
-    function persist(Cliente $cliente)
+    public function persist(Cliente $cliente)
     {
 
-        try
-        {
+
+        try {
+
+
             $strSQL = "INSERT INTO tblcliente (nome,endereco, enderecoCobranca,tipoPessoa,cpf, cnpj,grauVIP) VALUES (:nome,:endereco, :enderecoCobranca,:tipoPessoa,:cpf, :cnpj,:grauVIP);";
-            if($cliente->getId() != null  )
-            {
+
+            if ($cliente->getId() != null) {
                 $strSQL = "UPDATE tblcliente set nome = :nome,endereco = :endereco, enderecoCobranca = :enderecoCobranca,tipoPessoa = :tipoPessoa ,cpf = :cpf, cnpj = :cnpj ,grauVIP = :grauVIP ";
             }
 
@@ -40,42 +41,52 @@ class ClienteDAO
             $smtp->bindParam(":nome", $cliente->getNome());
             $smtp->bindParam(":endereco", $cliente->getEndereco());
             $smtp->bindParam(":enderecoCobranca", $cliente->getEnderecoCobranca());
-            $smtp->bindParam(":tipoPessoa", $cliente->returnTipoPessoa());
+            $smtp->bindParam(":tipoPessoa", $cliente->returnTipoPessoaId());
 
             $valor = "0";
-            if($cliente->returnTipoPessoaId() == 1)
-            {
+            if ($cliente->returnTipoPessoaId() == 1) {
                 $smtp->bindParam(":cpf", $cliente->returnDoc());
                 $smtp->bindParam(":cnpj", $valor);
-            }else{
+            } else {
                 $smtp->bindParam(":cpf", $valor);
                 $smtp->bindParam(":cnpj", $cliente->returnDoc());
             }
 
             $smtp->bindParam(":grauVIP", $cliente->returnEstrelas());
 
+
             $smtp->execute();
+
+
+
         } catch (\PDOException $e) {
             $error = "Erro: " . $e->getMessage();
+            var_dump($error);
+            die;
             $this->db->rollBack();
             die($error);
         }
 
     }
 
-    function flush()
+    public function flush()
     {
-        $this->db->commit();
+        try {
+            $this->db->commit();
+        } catch (\PDOException $e) {
+            var_dump("Apos commit" . $e->getMessage());
+            die("Erro: " . $e->getMessage());
+        }
 
     }
 
-    function get($id)
+    public function get($id)
     {
         $sql = "Select clie.*, tp.tipoPessoa FROM tblcliente clie
                 inner join tbltipopessoa tp on (clie.tipoPessoa = tp.id) where clie.id = :clienteId ";
 
         $smtp = $this->db->prepare($sql);
-        $smtp->bindParam(":clienteId", $id );
+        $smtp->bindParam(":clienteId", $id);
         $smtp->execute();
 
         $cliente = $smtp->fetchAll(PDO::FETCH_ASSOC);
@@ -84,13 +95,11 @@ class ClienteDAO
     }
 
 
-    function getList()
+    public function getList()
     {
-        $sql = "Select clie.*, tp.tipoPessoa  FROM tblcliente clie
-                inner join tbltipopessoa tp on (clie.tipoPessoa = tp.id) ";
+        $sql = "Select clie.*  FROM tblcliente clie";
 
         $smtp = $this->db->prepare($sql);
-
 
 
         $smtp->execute();

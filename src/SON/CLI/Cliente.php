@@ -1,8 +1,9 @@
 <?php
 
-namespace SON\Cliente;
+namespace SON\CLI;
 
-class Cliente{
+class Cliente
+{
 
     private $id;
     private $nome;
@@ -11,8 +12,7 @@ class Cliente{
     private $tipoPessoa;
 
 
-
-    public function __construct($nome , $endereco, $tipoPessoa)
+    public function __construct($nome, $endereco, $tipoPessoa)
     {
 
         $this->nome = $nome;
@@ -20,6 +20,8 @@ class Cliente{
         $this->tipoPessoa = $tipoPessoa;
 
     }
+
+
 
     /**
      * @return mixed
@@ -38,35 +40,32 @@ class Cliente{
     }
 
 
-
     public function returnTipoPessoa()
     {
-
-        if($this->tipoPessoa instanceof PessoaFisica)
-        {
-            return "Pessoa_Física";
-        }else{
-            return "Pessoa_Jurídica";
+        //var_dump($this->tipoPessoa); die;
+        if ($this->tipoPessoa instanceof PessoaFisica) {
+            return "Física";
+        } else {
+            return "Jurídica";
         }
     }
 
     public function returnTipoPessoaId()
     {
 
-        if($this->tipoPessoa instanceof PessoaFisica)
-        {
+        if ($this->tipoPessoa instanceof PessoaFisica) {
             return 1;
-        }else{
+        } else {
             return 2;
         }
     }
 
     public function returnDoc()
     {
-        if($this->tipoPessoa instanceof PessoaFisica)
-        {
+
+        if ($this->tipoPessoa instanceof PessoaFisica) {
             return $this->tipoPessoa->getCpf();
-        }else{
+        } else {
             return $this->tipoPessoa->getCnpj();
         }
     }
@@ -152,6 +151,4 @@ class Cliente{
     }
 
 
-
-
-} 
+}

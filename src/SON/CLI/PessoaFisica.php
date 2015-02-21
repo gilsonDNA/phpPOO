@@ -1,6 +1,9 @@
 <?php
-namespace SON\Cliente;
+namespace SON\CLI;
 
+
+use SON\CLI\Interfaces\ClienteVip;
+use SON\CLI\Interfaces\EnderecoCobranca;
 
 class PessoaFisica implements ClienteVip, EnderecoCobranca
 {
@@ -21,9 +24,6 @@ class PessoaFisica implements ClienteVip, EnderecoCobranca
     }
 
 
-
-
-
     public function setGrau($quantEstrelas)
     {
         $this->estrelas = $quantEstrelas;
@@ -34,10 +34,6 @@ class PessoaFisica implements ClienteVip, EnderecoCobranca
         return "Pessoa Física";
 
     }
-
-
-
-
 
 
     /**
@@ -87,7 +83,6 @@ class PessoaFisica implements ClienteVip, EnderecoCobranca
     {
         $this->enderecoCobranca = $enderecoCobranca;
     }
-
 
 
 }
